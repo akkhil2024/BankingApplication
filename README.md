@@ -86,9 +86,6 @@ Custodian DB:
 
 	1. table: Project
 	------------------
--- sinkdb.project definition
-
-
 CREATE TABLE `project` (
   `project_id` char(36) NOT NULL,
   `custodian_id` char(36) NOT NULL,
@@ -104,6 +101,7 @@ CREATE TABLE `project` (
   CONSTRAINT `fk_client_id_project` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`),
   CONSTRAINT `fk_custodian_id_project` FOREIGN KEY (`custodian_id`) REFERENCES `custodian` (`custodian_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
   2. custodian:
