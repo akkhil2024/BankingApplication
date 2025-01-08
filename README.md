@@ -216,3 +216,7 @@ CREATE TABLE `transaction` (
   CONSTRAINT `fk_client_id_transaction` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`),
   CONSTRAINT `fk_customer_transaction` FOREIGN KEY (`customer_id`) REFERENCES `custodian` (`custodian_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+<img width="434" alt="image" src="https://github.com/user-attachments/assets/ac0d68e9-2233-4ab0-a1c4-c1c9264bc2cd" />
+
