@@ -250,9 +250,85 @@ CREATE TABLE Bank_Transactions (
 
 ![BankingProject_Final](https://github.com/user-attachments/assets/f9b67504-9c79-426a-b4db-e9d36cfa29a2)
 
+
+AVRO Schema to be used:
+```
+	{
+  "type": "record",
+  "name": "BankTransaction",
+  "namespace": "com.bank.transactions",
+  "fields": [
+    {
+      "name": "transaction_id",
+      "type": "string"
+    },
+    {
+      "name": "account_id",
+      "type": "string"
+    },
+    {
+      "name": "tenant_id",
+      "type": "string"
+    },
+    {
+      "name": "transaction_type",
+      "type": {
+        "type": "enum",
+        "name": "TransactionType",
+        "symbols": ["CREDIT", "DEBIT", "TRANSFER", "REVERSAL"]
+      }
+    },
+    {
+      "name": "amount",
+      "type": "double"
+    },
+    {
+      "name": "currency",
+      "type": "string"
+    },
+    {
+      "name": "transaction_date",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "status",
+      "type": {
+        "type": "enum",
+        "name": "TransactionStatus",
+        "symbols": ["PENDING", "SUCCESS", "FAILED"]
+      }
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "created_at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "updated_at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}
+
+```
+
 ==============
 
 TO DO:
 1. define generic serdes for  all data types...
+2. Define Versioning for per tenant/ client using Avro Schema Registry
 
 
