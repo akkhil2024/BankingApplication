@@ -125,13 +125,10 @@ CREATE TABLE `custodian` (
  ```
 
 
-  
-
-
   3.  Client
   ---------
  ```
-	CREATE TABLE `client` (
+ CREATE TABLE `client` (
   `client_id` bigint NOT NULL,
   `name` varchar(255) NOT NULL,
   `timestamp` datetime NOT NULL,
@@ -139,15 +136,12 @@ CREATE TABLE `custodian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
-
-  
   
   4. transaction:
   ------------
   
-  -- sinkdb.`transaction` definition
-
-CREATE TABLE `transaction` (
+ ```
+	CREATE TABLE `transaction` (
   `transaction_id` char(36) NOT NULL,
   `account_id` bigint NOT NULL,
   `customer_id` char(36) NOT NULL,
@@ -166,10 +160,12 @@ CREATE TABLE `transaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
+ ```
+
+
 5. Customer:
 -----------
--- sinkdb.customer definition
-
+```
 CREATE TABLE `customer` (
   `customer_id` char(36) NOT NULL,
   `client_id` bigint NOT NULL,
@@ -182,10 +178,14 @@ CREATE TABLE `customer` (
   KEY `idx_transaction_date` (`created_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+```
+
+
+
 
 6. account_balances:
 -----------
--- sinkdb.account_balances definition
+```
 
 CREATE TABLE `account_balances` (
   `account` varchar(255) NOT NULL,
@@ -195,12 +195,13 @@ CREATE TABLE `account_balances` (
   KEY `fk_transaction_account_balances` (`account_id`),
   CONSTRAINT `fk_transaction_account_balances` FOREIGN KEY (`account_id`) REFERENCES `transaction` (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
 
 -------
 Sink DB:
 -------
 
--- sinkdb.`transaction` definition
+```
 
 CREATE TABLE `transaction` (
   `transaction_id` char(36) NOT NULL,
@@ -220,7 +221,7 @@ CREATE TABLE `transaction` (
   CONSTRAINT `fk_customer_transaction` FOREIGN KEY (`customer_id`) REFERENCES `custodian` (`custodian_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
+```
 <img width="434" alt="image" src="https://github.com/user-attachments/assets/ac0d68e9-2233-4ab0-a1c4-c1c9264bc2cd" />
 
 
@@ -233,6 +234,9 @@ CREATE TABLE `transaction` (
 
 ![BankingProject_Final](https://github.com/user-attachments/assets/f9b67504-9c79-426a-b4db-e9d36cfa29a2)
 
+==============
 
+TO DO:
+1. define generic serdes for  all data types...
 
 
