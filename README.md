@@ -243,6 +243,8 @@ CREATE TABLE Bank_Transactions (
 
 AVRO Schema to be used:**( This is the Schema to be used to send the Transaction payload)**
 **For Transaction Payload:**
+
+**THIS TRANSACTION IS USED AS EVENT**
 ```
 	{
   "type": "record",
