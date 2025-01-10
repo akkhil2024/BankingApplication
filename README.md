@@ -1,6 +1,6 @@
-Entitites involved:
+**Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
-  Role: ADMIN_USER,CUSTOMER
+  Role: ADMIN,Custodian,CUSTOMER
 2. Transaction Request Parameter; 
 	Entity that is read from Upstream sources using KakfaConnect.
 	Transfered as Value to the downstream service and account database
@@ -50,10 +50,7 @@ Ingestion of the transactions from multiple sources using Kafka broker
      1. TransactionConsumer; that acts as Consumer to read transactions and as producer to write the data to CalculatorService that write and updates the
 	   state store (inbuild Kafka Datastore) and do business logic calculation to evaluate id loan can be granted.
 
-  ----------
-   Data Model:
-   -----------
-   sinkDB:(Downstream DataSource)
+
 
   Tables:
    --------
@@ -78,10 +75,10 @@ Ingestion of the transactions from multiple sources using Kafka broker
 db name:
 
 ----------
-Custodian DB:
+Custodian DB: (Database for Source System that can create transactions itself OR can pull data using Kafka Connect)
 -----------
 
-	1. table: Project
+	1. table: Project (Logical Context to define some documents being assosicted with transaction)
 	------------------
  ```
 	CREATE TABLE `project` (
@@ -100,9 +97,6 @@ Custodian DB:
   CONSTRAINT `fk_custodian_id_project` FOREIGN KEY (`custodian_id`) REFERENCES `custodian` (`custodian_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
-
-
-
 
   2. custodian:
   -----------
@@ -123,7 +117,6 @@ CREATE TABLE `custodian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
  ```
-
 
   3.  Client
   ---------
@@ -179,9 +172,6 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ```
-
-
-
 
 6. account_balances:
 -----------
@@ -251,7 +241,8 @@ CREATE TABLE Bank_Transactions (
 ![BankingProject_Final](https://github.com/user-attachments/assets/f9b67504-9c79-426a-b4db-e9d36cfa29a2)
 
 
-AVRO Schema to be used:
+AVRO Schema to be used:**( This is the Schema to be used to send the Transaction payload)**
+**For Transaction Payload:**
 ```
 	{
   "type": "record",
@@ -324,6 +315,7 @@ AVRO Schema to be used:
 }
 
 ```
+
 
 Complete ER Model
 
