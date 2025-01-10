@@ -198,28 +198,25 @@ CREATE TABLE `account_balances` (
 ```
 
 -------
-Sink DB:
+Sink DB:(State Store ; a persistent Store used to process events as Streams)
 -------
 
 ```
 
-CREATE TABLE `transaction` (
-  `transaction_id` char(36) NOT NULL,
-  `account_id` bigint NOT NULL,
-  `customer_id` char(36) NOT NULL,
-  `ammount` decimal(15,2) NOT NULL,
-  `client_id` bigint NOT NULL,
-  `transaction_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_date` timestamp NULL DEFAULT NULL,
-  `status` enum('Pending','completed','failed','refunded') NOT NULL DEFAULT 'Pending',
-  PRIMARY KEY (`transaction_id`),
-  KEY `idx_axxount_id` (`account_id`),
-  KEY `idx_customer_id` (`customer_id`),
-  KEY `idx_transaction_date` (`transaction_date`),
-  KEY `fk_client_id_transaction` (`client_id`),
-  CONSTRAINT `fk_client_id_transaction` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`),
-  CONSTRAINT `fk_customer_transaction` FOREIGN KEY (`customer_id`) REFERENCES `custodian` (`custodian_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE Bank_Transactions (
+    transaction_id     UUID PRIMARY KEY,           -- Unique identifier for the transaction
+    account_id         UUID NOT NULL,              -- ID of the account involved in the transaction
+    tenant_id          UUID NOT NULL,              -- ID of the tenant (client) owning the account
+    transaction_type   VARCHAR(20) NOT NULL,       -- Type: CREDIT, DEBIT, TRANSFER, etc.
+    amount             DECIMAL(15, 2) NOT NULL,    -- Transaction amount with two decimal places
+    currency           CHAR(3) NOT NULL,           -- ISO currency code (e.g., USD, EUR)
+    transaction_date   TIMESTAMP NOT NULL,         -- Date and time of the transaction
+    status             VARCHAR(20) NOT NULL,       -- Status: PENDING, SUCCESS, FAILED
+    description        TEXT,                       -- Optional description of the transaction
+    created_at         TIMESTAMP DEFAULT NOW(),    -- When the transaction was recorded
+    updated_at         TIMESTAMP DEFAULT NOW()     -- Last updated time (for status changes, etc.)
+);
+
 
 ```
 <img width="434" alt="image" src="https://github.com/user-attachments/assets/ac0d68e9-2233-4ab0-a1c4-c1c9264bc2cd" />
