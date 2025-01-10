@@ -73,11 +73,6 @@ Ingestion of the transactions from multiple sources using Kafka broker
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
-
-
-
-
-
    2. Source DB(used for customer onboarding)
 
 db name:
@@ -88,7 +83,8 @@ Custodian DB:
 
 	1. table: Project
 	------------------
-CREATE TABLE `project` (
+ ```
+	CREATE TABLE `project` (
   `project_id` char(36) NOT NULL,
   `custodian_id` char(36) NOT NULL,
   `name` varchar(20) NOT NULL,
@@ -103,15 +99,14 @@ CREATE TABLE `project` (
   CONSTRAINT `fk_client_id_project` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`),
   CONSTRAINT `fk_custodian_id_project` FOREIGN KEY (`custodian_id`) REFERENCES `custodian` (`custodian_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
+
 
 
 
   2. custodian:
   -----------
-  -- sinkdb.custodian definition
-
--- sinkdb.custodian definition
-
+ ```
 CREATE TABLE `custodian` (
   `custodian_id` char(36) NOT NULL,
   `client_id` bigint NOT NULL,
@@ -126,19 +121,25 @@ CREATE TABLE `custodian` (
   KEY `fk_client_id` (`client_id`),
   CONSTRAINT `fk_client_id` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ ```
+
+
   
 
 
   3.  Client
   ---------
-  -- sinkdb.client definition
-
-CREATE TABLE `client` (
+ ```
+	CREATE TABLE `client` (
   `client_id` bigint NOT NULL,
   `name` varchar(255) NOT NULL,
   `timestamp` datetime NOT NULL,
   PRIMARY KEY (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
+
+
   
   
   4. transaction:
