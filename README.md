@@ -62,14 +62,16 @@ Ingestion of the transactions from multiple sources using Kafka broker
    ----------------------
    account_balances:
 -----------
- `CREATE TABLE `account_balances` (
+ ```
+ CREATE TABLE `account_balances` (
   `account` varchar(255) NOT NULL,
   `amount` decimal(19,4) DEFAULT NULL,
   `account_id` bigint NOT NULL,
   PRIMARY KEY (`account`),
   KEY `fk_transaction_account_balances` (`account_id`),
   CONSTRAINT `fk_transaction_account_balances` FOREIGN KEY (`account_id`) REFERENCES `transaction` (`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;`.
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
 
 
 
