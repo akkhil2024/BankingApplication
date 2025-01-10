@@ -325,6 +325,10 @@ AVRO Schema to be used:
 
 ```
 
+Complete ER Model
+
+![Custodian_ER_Model drawio](https://github.com/user-attachments/assets/66a68bb6-5858-42a6-b897-b9e24d0b06fa)
+
 ==============
 
 TO DO:
