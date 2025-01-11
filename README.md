@@ -323,6 +323,18 @@ Complete ER Model
 
 ![Custodian_ER_Model drawio](https://github.com/user-attachments/assets/66a68bb6-5858-42a6-b897-b9e24d0b06fa)
 
+
+**KAFKA SETUP:
+**
+docker-compose.yml is used to spwan the components for Kafka using the image: https://github.com/lensesio/fast-data-dev
+<img width="213" alt="image" src="https://github.com/user-attachments/assets/1a8a7a5a-4607-40e3-af1b-f852b81af62e" />
+
+
+Port tunneling from port: 3030
+<img width="746" alt="image" src="https://github.com/user-attachments/assets/ddc4c829-25c9-4a62-a7f0-ba5c129f40ef" />
+
+
+
 ==============
 
 TO DO:
