@@ -1,0 +1,10 @@
+@namespace("com.tolopolgyservice.Tolopolgyservice.topology")
+protocol AppProtocol {
+
+	record AccountBalance {
+		string account;
+		decimal(14,2) amount;
+		timestamp_ms timestamp;
+	}
+}
+

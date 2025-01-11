@@ -1,0 +1,11 @@
+@namespace("com.tolopolgyservice.Tolopolgyservice.topology")
+protocol AppProtocol {
+
+	record LoanRequest {
+		string requestId;
+		string account;
+		decimal(14,2) amount;
+		timestamp_ms timestamp;
+	}
+}
+
