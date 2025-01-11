@@ -1,0 +1,14 @@
+services:
+   mysql:
+    image: mysql:8.1.0
+    container_name: mysql
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=sinkdb
+    volumes:
+      - "./docker/mysql:/docker-entrypoint-initdb.d"
+    healthcheck:
+      test: "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"

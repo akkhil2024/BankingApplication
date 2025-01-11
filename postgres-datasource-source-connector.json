@@ -1,0 +1,14 @@
+{
+    "name": "jdbc-source-connector-postgres",
+    "config": {
+      "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+      "tasks.max": "1",
+      "topic.prefix": "jdbc-",
+      "connection.url": "jdbc:mysql://localhost:3307/sinkdb?allowPublicKeyRetrieval=true&useSSL=false",
+      "connection.user": "root",
+      "connection.password": "secret",
+      "mode": "incrementing",
+      "incrementing.column.name": "id",
+      "poll.interval.ms": "1000"
+    }
+  }
