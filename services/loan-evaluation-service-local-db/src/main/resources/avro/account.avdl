@@ -1,0 +1,8 @@
+@namespace("com.loan.request.api.loan_request_api.topology")
+protocol AppProtocol {
+
+	record Account {
+		string account;
+	}
+}
+
