@@ -168,7 +168,76 @@ Following are the Avro Schemas registred for each topic Message:
 }
 ```
 	
-   
+  3.  **loan-evaluation-results-key**
+      ```
+        {
+  "type": "record",
+  "name": "Account",
+  "namespace": "com.loan.request.api.loan_request_api.topology",
+  "fields": [
+    {
+      "name": "account",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    }
+  ]
+}
+      ```
+      **loan-evaluation-results-value**
+
+      ```
+	{
+  "type": "record",
+  "name": "LoanResponse",
+  "namespace": "com.loan.request.api.loan_request_api.topology",
+  "fields": [
+    {
+      "name": "requestId",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "account",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "amount",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 14,
+        "scale": 2
+      }
+    },
+    {
+      "name": "timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "result",
+      "type": {
+        "type": "enum",
+        "name": "EvaluationResult",
+        "symbols": [
+          "APPROVED",
+          "REJECTED",
+          "REVIEW_NEEDED"
+        ]
+      }
+    }
+  ]
+}
+      ```
 
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
