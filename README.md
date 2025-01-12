@@ -669,6 +669,26 @@ CREATE TABLE account_balances (
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/aa2840ac-cbe1-4d3a-81eb-782b9be5624a" />
 
 
+Once the evluation is done  the reponse would be written to topic:
+**loan-evaluation-results**
+
+```
+{
+    "topic": "loan-evaluation-results",
+    "key": {
+      "account": "001-00201"
+    },
+    "value": {
+      "requestId": "21e53ca5-7fe0-4d9c-866c-b11f549cb42c",
+      "account": "001-00201",
+      "amount": "\rà",
+      "timestamp": 1736693536742,
+      "result": "REJECTED"
+    },
+    "partition": 0,
+    "offset": 10
+  }
+```
 
 Complete ER Model
 
