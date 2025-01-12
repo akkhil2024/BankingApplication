@@ -191,58 +191,12 @@ Following are the Avro Schemas registred for each topic Message:
 
       **loan-evaluation-results-value**
 
-      ```
-	{
-  "type": "record",
-  "name": "LoanResponse",
-  "namespace": "com.loan.request.api.loan_request_api.topology",
-  "fields": [
-    {
-      "name": "requestId",
-      "type": {
-        "type": "string",
-        "avro.java.string": "String"
-      }
-    },
-    {
-      "name": "account",
-      "type": {
-        "type": "string",
-        "avro.java.string": "String"
-      }
-    },
-    {
-      "name": "amount",
-      "type": {
-        "type": "bytes",
-        "logicalType": "decimal",
-        "precision": 14,
-        "scale": 2
-      }
-    },
-    {
-      "name": "timestamp",
-      "type": {
-        "type": "long",
-        "logicalType": "timestamp-millis"
-      }
-    },
-    {
-      "name": "result",
-      "type": {
-        "type": "enum",
-        "name": "EvaluationResult",
-        "symbols": [
-          "APPROVED",
-          "REJECTED",
-          "REVIEW_NEEDED"
-        ]
-      }
-    }
-  ]
-}
-      ```
+    ```
+      test
+
+    ```
 	
+
   
 
 **Entitites involved:**
