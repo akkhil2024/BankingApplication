@@ -250,6 +250,61 @@ Following are the Avro Schemas registred for each topic Message:
 }
      ```
 
+     7. **loan-evaluation-topology-account-balances-table-changelog-key**
+
+```
+	{
+  "type": "record",
+  "name": "Account",
+  "namespace": "com.tolopolgyservice.Tolopolgyservice.topology",
+  "fields": [
+    {
+      "name": "account",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    }
+  ]
+}
+```
+
+8. **loan-evaluation-topology-account-balances-table-changelog-value**
+
+   ```
+	{
+  "type": "record",
+  "name": "AccountBalance",
+  "namespace": "com.tolopolgyservice.Tolopolgyservice.topology",
+  "fields": [
+    {
+      "name": "account",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    },
+    {
+      "name": "amount",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 14,
+        "scale": 2
+      }
+    },
+    {
+      "name": "timestamp",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}
+   ```
+     
+
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
   Role: ADMIN,Custodian,CUSTOMER
