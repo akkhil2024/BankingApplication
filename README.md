@@ -188,10 +188,13 @@ Following are the Avro Schemas registred for each topic Message:
 ```
 
 4. **Value**
-	```
+
+5. **loan-requests-value**
+
+```
 	{
   "type": "record",
-  "name": "LoanResponse",
+  "name": "LoanRequest",
   "namespace": "com.loan.request.api.loan_request_api.topology",
   "fields": [
     {
@@ -223,25 +226,10 @@ Following are the Avro Schemas registred for each topic Message:
         "type": "long",
         "logicalType": "timestamp-millis"
       }
-    },
-    {
-      "name": "result",
-      "type": {
-        "type": "enum",
-        "name": "EvaluationResult",
-        "symbols": [
-          "APPROVED",
-          "REJECTED",
-          "REVIEW_NEEDED"
-        ]
-      }
     }
   ]
 }
-
- 	```
-5. **Tets**
-
+```
   
   
 
