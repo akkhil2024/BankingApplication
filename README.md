@@ -187,10 +187,9 @@ Following are the Avro Schemas registred for each topic Message:
 }
 ```
 
-4. Value
-
-    ```
-{
+4. **Value**
+	```
+	{
   "type": "record",
   "name": "LoanResponse",
   "namespace": "com.loan.request.api.loan_request_api.topology",
@@ -239,7 +238,11 @@ Following are the Avro Schemas registred for each topic Message:
     }
   ]
 }
-```
+
+ 	```
+5. **Tets**
+
+  
   
 
 **Entitites involved:**
