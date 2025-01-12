@@ -635,7 +635,7 @@ CREATE TABLE account_balances (
 ```
 
 
-Connector request payload to create connector using Kafka Connect:
+**Connector request payload to create connector using Kafka Connect:**
 
 ```
 {
@@ -665,6 +665,10 @@ Connector request payload to create connector using Kafka Connect:
 }
 
 ```
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/aa2840ac-cbe1-4d3a-81eb-782b9be5624a" />
+
+
 
 Complete ER Model
 
