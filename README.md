@@ -15,7 +15,7 @@ Port tunneling from port: 3030
 <img width="746" alt="image" src="https://github.com/user-attachments/assets/ddc4c829-25c9-4a62-a7f0-ba5c129f40ef" />
 
 **Topologies:**
-TransactionFilterTopology
+**TransactionFilterTopology**
   Data is read from transactions.csv to topic **transactions** which is parsed using filter topology to filter transactions of type transfer to **transactions-filter** and samae are written to **account-balances** topic which saves the transactions into inbuild state store of Kafka Streams
 
 
@@ -86,6 +86,32 @@ TransactionFilterTopology
 ```
 line 65 is binary representation; using Kafka Serdes
 
+
+**LoanEvaluationTopolgy**
+This topology readsfrom topic **loan-requests** 
+The following payload is sent by USer to REST API: /loans
+
+```
+@Value
+public class ApiLoanRequest {
+    String account;
+    BigDecimal amount;
+}
+```
+
+the Stream will use KTAbles to persists data to DataStore using MySQL Connector:
+
+```
+KTable<Account, AccountBalance> accountBalanceTable =
+    builder
+        .stream("account-balances",
+            Consumed.with(accountKeySerde, accountBalanceSerde))
+        .toTable(Materialized
+                     .<Account, AccountBalance, KeyValueStore<Bytes, byte[]>>as(
+                         "account-balances-table")
+                     .withKeySerde(accountKeySerde)
+                     .withValueSerde(accountBalanceSerde));
+
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
   Role: ADMIN,Custodian,CUSTOMER
@@ -93,7 +119,7 @@ line 65 is binary representation; using Kafka Serdes
 	Entity that is read from Upstream sources using KakfaConnect.
 	Transfered as Value to the downstream service and account database
 3. Loan Request payload/Object;
-
+```
 
 Flow is as below:
 --------------------
