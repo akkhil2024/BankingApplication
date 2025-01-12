@@ -635,6 +635,37 @@ CREATE TABLE account_balances (
 ```
 
 
+Connector request payload to create connector using Kafka Connect:
+
+```
+{
+  "name": "AccountBalanceJdbcSinkConnector",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "connection.password": "secret",
+    "connection.url": "jdbc:mysql://mysql:3306/loan",
+    "connection.user": "root",
+    "db.name": "loan",
+    "delete.enabled": "true",
+    "fields.whitelist": "amount",
+    "input.key.format": "STRING",
+    "insert.mode": "upsert",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://localhost:8081",
+    "key.converter.schemas.enable": "true",
+    "pk.fields": "account",
+    "pk.mode": "record_key",
+    "table.name.format": "account_balances",
+    "tasks.max": "1",
+    "topics": "account-balances",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url": "http://localhost:8081",
+    "value.converter.schemas.enable": "true"
+  }
+}
+
+```
+
 Complete ER Model
 
 ![Custodian_ER_Model drawio](https://github.com/user-attachments/assets/66a68bb6-5858-42a6-b897-b9e24d0b06fa)
