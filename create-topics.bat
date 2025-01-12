@@ -9,3 +9,7 @@ docker exec -t kafka kafka-topics --bootstrap-server localhost:9092 --create --t
 
 docker exec -t kafka kafka-topics --bootstrap-server localhost:9092 --create --topic loan-evaluation-response --partitions 1 --replication-factor 1
 
+
+#to delete topic
+#docker exec -t kafka kafka-topics --bootstrap-server localhost:9092 --delete --topic transactions
+
