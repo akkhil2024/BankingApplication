@@ -14,7 +14,7 @@ import java.util.Iterator;
 @RequiredArgsConstructor
 @Component
 public class TransactionProducerScheduler {
-    private static final String CSV_FILE = "/";
+    private static final String CSV_FILE = "/transactions.csv";
     private static final Iterator<Transaction> TRANSACTIONS = TransactionLoader.loadTransactions(CSV_FILE).iterator();
 
     private final TransactionService transactionService;
