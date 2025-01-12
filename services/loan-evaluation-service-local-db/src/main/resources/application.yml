@@ -11,14 +11,15 @@ spring:
       properties:
         schema.registry.url: http://localhost:8081
         specific.avro.reader: true
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
   datasource:
-    url: jdbc:mysql://localhost:3307/sinkdb?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/loan
     username: root
     password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
 
 loan:
   input:
