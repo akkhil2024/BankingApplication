@@ -19,9 +19,11 @@ TransactionFilterTopology
   Data is read from transactions.csv to topic **transactions** which is parsed using filter topology to filter transactions of type transfer to **transactions-filter** and samae are written to **account-balances** topic which saves the transactions into inbuild state store of Kafka Streams
 
 
-  Intermediate topics are created for the state Store for  combination of <application_ID> + <state_Store_name>
+  Intermediate topics are created for the state Store for  combination of <application_ID> + <state_Store_name> + chanagelog
   	STATE_STORE = "account-balance-store"
    	APPLICATION_ID_CONFIG = "account-balance-calculation"
+ as; account-balance-calculation-account-balance-store-changelog
+ and loan-evaluation-topology-account-balances-table-changelog
 
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
