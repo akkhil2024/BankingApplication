@@ -14,6 +14,10 @@ docker-compose.yml is used to spwan the components for Kafka using the image: ht
 Port tunneling from port: 3030
 <img width="746" alt="image" src="https://github.com/user-attachments/assets/ddc4c829-25c9-4a62-a7f0-ba5c129f40ef" />
 
+**Topologies:**
+TransactionFilterTopology
+  Data is read from transactions.csv to topic **transactions** which is parsed using filter topology to filter transactions of type transfer to **transactions-filter** and samae are written to **account-balances** topic which saves the transactions into inbuild state store of Kafka Streams
+
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
   Role: ADMIN,Custodian,CUSTOMER
