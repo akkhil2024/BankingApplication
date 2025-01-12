@@ -625,6 +625,15 @@ AVRO Schema to be used:**( This is the Schema to be used to send the Transaction
 
 ```
 
+**account_balances table:**
+
+```
+CREATE TABLE account_balances (
+    account VARCHAR(255) NOT NULL PRIMARY KEY,
+    amount DECIMAL(19, 2)
+);
+```
+
 
 Complete ER Model
 
