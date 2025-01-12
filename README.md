@@ -242,6 +242,8 @@ Following are the Avro Schemas registred for each topic Message:
   ]
 }
       ```
+	
+  
 
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
