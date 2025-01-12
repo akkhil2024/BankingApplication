@@ -1,0 +1,8 @@
+@namespace("com.tolopolgyservice.Tolopolgyservice.topology")
+protocol AppProtocol {
+
+	record Account {
+		string account;
+	}
+}
+

@@ -1,0 +1,11 @@
+@namespace("com.loan.request.api.loan_request_api.topology")
+protocol AppProtocol {
+
+	record LoanRequest {
+		string requestId;
+		string account;
+		decimal(14,2) amount;
+		timestamp_ms timestamp;
+	}
+}
+
