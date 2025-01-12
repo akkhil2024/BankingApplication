@@ -151,7 +151,7 @@ Following are the Avro Schemas registred for each topic Message:
 
 2. **account-balances-key**
 
-   ```
+  ```
 	{
   "type": "record",
   "name": "Account",
@@ -166,7 +166,9 @@ Following are the Avro Schemas registred for each topic Message:
     }
   ]
 }
-   ```
+```
+	
+   
 
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
