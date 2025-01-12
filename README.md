@@ -169,8 +169,9 @@ Following are the Avro Schemas registred for each topic Message:
 ```
 	
   3.  **loan-evaluation-results-key**
-      ```
-        {
+
+```
+	 {
   "type": "record",
   "name": "Account",
   "namespace": "com.loan.request.api.loan_request_api.topology",
@@ -184,7 +185,8 @@ Following are the Avro Schemas registred for each topic Message:
     }
   ]
 }
-      ```
+```
+
       **loan-evaluation-results-value**
 
       ```
