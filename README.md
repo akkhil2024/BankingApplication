@@ -25,6 +25,67 @@ TransactionFilterTopology
  as; account-balance-calculation-account-balance-store-changelog
  and loan-evaluation-topology-account-balances-table-changelog
 
+
+ Flow for ingestion of transaction:
+ 1. Data is writeen to topic **transactions**
+    <img width="943" alt="image" src="https://github.com/user-attachments/assets/e492ce70-080f-4cef-9d75-faf023b56805" />
+
+ 2.
+    2.1 data is filtered based on tranaction type; here its for type 'TRANSFER'
+    message body inside transfers-transactions:
+```
+    {
+    "topic": "transfer-transactions",
+    "key": {
+      "id": null,
+      "fromAccount": "ArihaanGupta5",
+      "toAccount": "001-00201"
+    },
+    "value": {
+      "id": "3050ebaf-9c06-4569-a6d0-c1441bef26e8",
+      "fromAccount": "ArihaanGupta5",
+      "toAccount": "001-00201",
+      "timestamp": "2029-01-22 12:17:10",
+      "amount": 99900,
+      "type": "TRANSFER"
+    },
+    "partition": 0,
+    "offset": 9
+  }
+```
+  2.2 the trqansaction from Step1 is persisted into inbuild state-store(Kafka Streams DataStore) below topics:** (using account-balance-calculation Topology)**
+  **account-balance-calculation-account-balance-store-changelog** 
+  **account-balances** will corresponding payloads:
+
+```
+  {
+    "topic": "account-balance-calculation-account-balance-store-changelog",
+    "key": "ArihaanGupta5",
+    "value": "-99900",
+    "partition": 0,
+    "offset": 21
+  }
+
+```
+  and
+```
+{
+    "topic": "account-balances",
+    "key": {
+      "account": "ArihaanGupta5"
+    },
+    "value": {
+      "account": "ArihaanGupta5",
+      "amount": "ÿg",
+      "timestamp": 1863758830000
+    },
+    "partition": 0,
+    "offset": 9
+  }
+
+```
+line 65 is binary representation; using Kafka Serdes
+
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
   Role: ADMIN,Custodian,CUSTOMER
