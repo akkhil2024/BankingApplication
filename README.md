@@ -231,7 +231,24 @@ Following are the Avro Schemas registred for each topic Message:
 }
 ```
   
-  
+  6. **loan-requests-key**
+
+     ```
+{
+  "type": "record",
+  "name": "Account",
+  "namespace": "com.loan.request.api.loan_request_api.topology",
+  "fields": [
+    {
+      "name": "account",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      }
+    }
+  ]
+}
+     ```
 
 **Entitites involved:**
 1. There are two users for the application: Admin User and Regular User(Customer)
